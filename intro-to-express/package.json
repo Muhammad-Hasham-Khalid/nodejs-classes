@@ -1,0 +1,19 @@
+{
+  "name": "express-basic-server",
+  "version": "1.0.0",
+  "description": "Building a simple server using express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Muhammad Hasham",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
