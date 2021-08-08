@@ -5,6 +5,7 @@ import morgan from 'morgan';
 
 import middleware from './middlewares/auth.js';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ dotenv.config();
 const app = express();
 
 // middlewares
+app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 // app.use(middleware); // will run on every request
