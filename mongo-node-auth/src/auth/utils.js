@@ -7,7 +7,7 @@ export const generateToken = user => {
       { id: user.id },
       config.JWT_SECRET,
       {
-        expiresIn: config.JWT_EXPIRES_IN,
+        expiresIn: '30d',
       },
       (error, token) => {
         if (error) return reject(error);

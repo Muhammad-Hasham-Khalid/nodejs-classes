@@ -5,6 +5,10 @@ import { verifyToken } from './utils';
 export const authenticate = async (request, response, next) => {
   const bearer = request.headers.authorization;
 
+  // Prefix: Bearer | Token
+  // 'Bearer <the token value here>'
+  // 'Token <the token value here>'
+
   if (!bearer || !bearer.startsWith('Bearer ')) {
     return response
       .status(401)

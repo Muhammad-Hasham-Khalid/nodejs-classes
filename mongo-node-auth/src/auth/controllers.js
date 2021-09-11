@@ -1,6 +1,6 @@
 import { User, userValidationSchema } from '../resources/user/user.model';
 import { messageLogger } from '../utils/loggers';
-import { generateToken, verifyToken } from './utils';
+import { generateToken } from './utils';
 
 export const signin = async (request, response) => {
   if (!request.body.email || !request.body.password) {
@@ -19,7 +19,8 @@ export const signin = async (request, response) => {
         message: invalidCredentials,
       });
     }
-    const match = foundUser.checkPassword(request.body.password);
+    const match = await foundUser.checkPassword(request.body.password);
+
     if (!match) {
       return response.status(400).json({
         success: false,

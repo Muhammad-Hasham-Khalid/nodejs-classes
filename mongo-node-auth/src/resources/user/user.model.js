@@ -23,6 +23,8 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// mongoose
+// before saving in mongodb
 // hash password before saving
 userSchema.pre('save', function (next) {
   if (!this.isModified('password')) {
@@ -39,12 +41,7 @@ userSchema.pre('save', function (next) {
 // check password
 userSchema.methods.checkPassword = function (password) {
   const passwordHash = this.password;
-  return new Promise((resolve, reject) =>
-    bcrypt.compare(password, passwordHash, (error, isSame) => {
-      if (error) return reject(error);
-      resolve(isSame);
-    })
-  );
+  return bcrypt.compare(password, passwordHash);
 };
 
 export const userValidationSchema = Joi.object().keys({
